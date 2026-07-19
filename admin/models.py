@@ -54,4 +54,3 @@ class Attendance(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     data = models.DateField()
     status = models.BooleanField(default=False)
-    h

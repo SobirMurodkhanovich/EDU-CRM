@@ -63,7 +63,6 @@ class UpdateProfileView(View):
             return redirect('user:profile')
         context = {
             'form': form,
-            'categories':categories
         }
         return render(request, 'update.html', context)
 

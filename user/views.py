@@ -1,0 +1,73 @@
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect
+from django.views import View
+from django.contrib.auth import login, logout
+from .forms import RegisterUserForm,LoginUserForm,UserProfileUpdateForm
+
+class RegisterView(View):
+    def get(self,request):
+        form = RegisterUserForm()
+        context = {
+            'form':form
+        }
+        return render(request,'register.html',context)
+    def post(self,request):
+        form = RegisterUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('user:login')
+        return render(request, 'register.html')
+
+class LoginView(View):
+    def get(self,request):
+        form = LoginUserForm()
+        context = {
+            'form':form
+        }
+        return render(request,'login.html',context)
+
+    def post(self,request):
+        login_form = AuthenticationForm(data=request.POST)
+        if login_form.is_valid():
+            user = login_form.get_user()
+            login(request,user)
+            return redirect('landing_page')
+        else:
+            form = LoginUserForm()
+            context = {
+                'form': form
+            }
+            return render(request, 'login.html', context)
+
+class UserProfile(View):
+    def get(self,request):
+        user = request.user
+        context = {
+            'user':user,
+        }
+        return render(request,'profile.html',context)
+
+
+class UpdateProfileView(View):
+    def get(self, request):
+        form = UserProfileUpdateForm(request.FILES)
+        context = {
+            'form': form,
+        }
+        return render(request, 'update.html', context)
+
+    def post(self, request):
+        form = UserProfileUpdateForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('user:profile')
+        context = {
+            'form': form,
+            'categories':categories
+        }
+        return render(request, 'update.html', context)
+
+class LogoutView(View):
+    def get(self, request):
+        logout(request)
+        return redirect('landing_page')

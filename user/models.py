@@ -10,3 +10,5 @@ class CustomUser(AbstractUser):
     phone = models.CharField(max_length=20)
     role = models.CharField(max_length=20, choices=ROLE_CHOICES, default='user')
     created_at = models.DateTimeField(auto_now_add=True)
+
+

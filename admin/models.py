@@ -2,6 +2,7 @@ from django.db import models
 from user.models import CustomUser
 
 
+
 class Teacher(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     phone = models.CharField(max_length=20)
@@ -54,3 +55,4 @@ class Attendance(models.Model):
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     data = models.DateField()
     status = models.BooleanField(default=False)
+

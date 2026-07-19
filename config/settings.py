@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'admin',
+    'main',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,6 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTH_USER_MODEL = 'User.CustomUser'
+AUTH_USER_MODEL = 'user.CustomUser'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

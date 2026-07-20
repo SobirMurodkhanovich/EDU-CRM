@@ -62,34 +62,39 @@
       <div class="avatar-upload">
         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Profil rasmi" class="avatar-upload__img">
         <div class="avatar-upload__actions">
-          <label for="avatar" class="btn btn--outline btn--small">Rasm yuklash</label>
-          <input type="file" id="avatar" name="avatar" accept="image/*" hidden>
+
+
           <button type="button" class="btn btn--ghost btn--small">O'chirish</button>
         </div>
       </div>
 
-      <form class="profile-form" action="#" method="POST">
-        {% csrf_token %}
+      <form method="POST">
+      {% csrf_token %}
 
         <div class="form-row">
           <div class="form-group">
             <label for="first_name">Ism</label>
-            <input type="text" id="first_name" name="first_name" placeholder="Ismingiz" value="{{ user.first_name }}" required>
+            <input type="text" id="first_name" name="first_name" placeholder="Ismingiz" value="{{ user.first_name }}" >
           </div>
           <div class="form-group">
             <label for="last_name">Familiya</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Familiyangiz" value="{{ user.last_name }}" required>
+            <input type="text" id="last_name" name="last_name" placeholder="Familiyangiz" value="{{ user.last_name }}" >
           </div>
         </div>
 
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="example@mail.com" value="{{ user.email }}" required>
+          <input type="email" id="email" name="email" placeholder="example@mail.com" value="{{ user.email }}" >
         </div>
 
         <div class="form-group">
           <label for="phone">Telefon raqam</label>
-          <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" value="{{ user.phone }}" required>
+          <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" value="{{ user.phone }}">
+        </div>
+
+        <div class="form-group">
+          <label for="phone"> Username</label>
+          <input type="tel"  name="username" placeholder="" value="{{ user.username }}">
         </div>
 
         <div class="form-actions">

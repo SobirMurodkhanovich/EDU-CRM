@@ -50,20 +50,17 @@ class UserProfile(View):
 
 class UpdateProfileView(View):
     def get(self, request):
-        form = UserProfileUpdateForm(request.FILES)
-        context = {
-            'form': form,
-        }
+        form = UserProfileUpdateForm(instance=request.user)
+        context = {'form': form}
         return render(request, 'user/update-profile.html', context)
 
     def post(self, request):
-        form = UserProfileUpdateForm(request.POST,request.FILES)
+        form = UserProfileUpdateForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('user:profile')
-        context = {
-            'form': form,
-        }
+
+        context = {'form': form}
         return render(request, 'user/update-profile.html', context)
 
 class LogoutView(View):

@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - Kirish</title>
+<link rel="stylesheet" href="{% static 'user/login.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__inner">
+    <div class="logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+    <nav class="nav">
+      <a href="#" class="nav__link">Home</a>
+      <a href="#" class="nav__link">About Us</a>
+      <a href="#" class="nav__link">Courses</a>
+      <a href="#" class="nav__link">Portfolio</a>
+      <a href="#" class="nav__link">Testimonial</a>
+      <a href="#" class="nav__link">Contact</a>
+    </nav>
+    <a href="register.html" class="btn btn--outline btn--small">Sign Up</a>
+  </div>
+</header>
+
+<!-- LOGIN SECTION -->
+<section class="auth">
+  <div class="container auth__inner">
+
+    <!-- LEFT: IMAGE / INFO -->
+    <div class="auth__side">
+      <div class="auth__blob"></div>
+      <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" alt="Student" class="auth__photo">
+      <div class="auth__side-text">
+        <span class="badge">Welcome back <span>Lorem ipsum dolor sit amet, consectetur.</span></span>
+        <h2>Find your Course &amp;<br> make sure goal.</h2>
+        <p>Akkountingizga kiring va o'quv jarayonizni davom ettiring. 👋</p>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="auth__form-wrap">
+      <span class="eyebrow">Welcome Back</span>
+      <h1 class="auth__title">Akkountingizga<br> kiring.</h1>
+      <p class="auth__text">Davom etish uchun ma'lumotlaringizni kiriting.</p>
+
+      <form class="register-form" action="#" method="POST">
+      {% csrf_token %}
+        <div class="form-group">
+          <label for="username">Foydalanuvchi nomi</label>
+          <input type="text" id="username" name="username" placeholder="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Parol</label>
+          <div class="password-field">
+            <input type="password" id="password" name="password" placeholder="••••••••" required>
+            <button type="button" class="toggle-password" aria-label="Parolni ko'rsatish">👁</button>
+          </div>
+        </div>
+
+        <div class="form-options">
+          <label class="checkbox">
+            <input type="checkbox">
+            <span>Meni eslab qol</span>
+          </label>
+          <a href="#" class="link-arrow">Parolni unutdingizmi?</a>
+        </div>
+
+        <button type="submit" class="btn btn--primary btn--full">Kirish</button>
+
+        <p class="auth__switch">Akkountingiz yo'qmi? <a href="register.html" class="link-arrow">Ro'yxatdan o'tish</a></p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <div class="logo">
+        <span class="logo__icon">🛡️</span>
+        <span class="logo__text">Clas<span class="accent">rom</span></span>
+      </div>
+      <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+      <div class="socials">
+        <a href="#">f</a>
+        <a href="#">✆</a>
+        <a href="#">◎</a>
+        <a href="#">in</a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Our Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Support</a>
+      <a href="#">Latest Blog</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="footer__col">
+      <h4>Feature</h4>
+      <a href="#">Data Analytics</a>
+      <a href="#">Email Marketing</a>
+      <a href="#">Seo Ranking</a>
+      <a href="#">Website Growth</a>
+      <a href="#">Affiliate</a>
+    </div>
+    <div class="footer__col">
+      <h4>Need Help?</h4>
+      <a href="#">Find a Job?</a>
+      <a href="#">Looking Consultant?</a>
+      <a href="#">Download App</a>
+      <a href="#">Create a Account</a>
+      <a href="#">Much More</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    © 2021 All Rights Reserved By : Soykot Talukdar
+  </div>
+</footer>
+
+<script>
+  const toggleBtn = document.querySelector('.toggle-password');
+  const passwordInput = document.getElementById('password');
+  toggleBtn.addEventListener('click', () => {
+    const isHidden = passwordInput.type === 'password';
+    passwordInput.type = isHidden ? 'text' : 'password';
+    toggleBtn.textContent = isHidden ? '🙈' : '👁';
+  });
+</script>
+
+</body>
+</html>

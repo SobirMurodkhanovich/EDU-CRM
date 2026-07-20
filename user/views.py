@@ -10,13 +10,13 @@ class RegisterView(View):
         context = {
             'form':form
         }
-        return render(request,'register.html',context)
+        return render(request,'user/register.html',context)
     def post(self,request):
         form = RegisterUserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('user:login')
-        return render(request, 'register.html')
+        return render(request, 'user/register.html')
 
 class LoginView(View):
     def get(self,request):
@@ -24,7 +24,7 @@ class LoginView(View):
         context = {
             'form':form
         }
-        return render(request,'login.html',context)
+        return render(request,'user/login.html',context)
 
     def post(self,request):
         login_form = AuthenticationForm(data=request.POST)
@@ -37,7 +37,7 @@ class LoginView(View):
             context = {
                 'form': form
             }
-            return render(request, 'login.html', context)
+            return render(request, 'user/login.html', context)
 
 class UserProfile(View):
     def get(self,request):
@@ -45,7 +45,7 @@ class UserProfile(View):
         context = {
             'user':user,
         }
-        return render(request,'profile.html',context)
+        return render(request,'user/profile.html',context)
 
 
 class UpdateProfileView(View):
@@ -54,7 +54,7 @@ class UpdateProfileView(View):
         context = {
             'form': form,
         }
-        return render(request, 'update.html', context)
+        return render(request, 'user/update.html', context)
 
     def post(self, request):
         form = UserProfileUpdateForm(request.POST,request.FILES)
@@ -64,7 +64,7 @@ class UpdateProfileView(View):
         context = {
             'form': form,
         }
-        return render(request, 'update.html', context)
+        return render(request, 'user/update.html', context)
 
 class LogoutView(View):
     def get(self, request):

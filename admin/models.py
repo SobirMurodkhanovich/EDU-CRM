@@ -45,7 +45,7 @@ class Salary(models.Model):
 
 class Paymet(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    amount = models.IntegerField()
     paymet_data = models.DateField()
     for_month = models.DateField()
     payment_type = models.CharField(max_length=50)
@@ -54,5 +54,5 @@ class Attendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     group = models.ForeignKey(Group, on_delete=models.CASCADE)
     data = models.DateField()
-    status = models.BooleanField(default=False)
+    status = models.CharField(max_length=55)
 

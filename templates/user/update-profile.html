@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - Profilni tahrirlash</title>
+<link rel="stylesheet" href="{% static 'user/update-profile.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__inner">
+    <div class="logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+    <nav class="nav">
+      <a href="#" class="nav__link">Home</a>
+      <a href="#" class="nav__link">About Us</a>
+      <a href="#" class="nav__link">Courses</a>
+      <a href="#" class="nav__link">Portfolio</a>
+      <a href="#" class="nav__link">Testimonial</a>
+      <a href="#" class="nav__link">Contact</a>
+    </nav>
+    <div class="header__user">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Profil" class="header__avatar">
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE SECTION -->
+<section class="profile">
+  <div class="container profile__inner">
+
+    <!-- SIDEBAR -->
+    <aside class="profile__sidebar">
+      <div class="profile__card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Profil rasmi" class="profile__avatar">
+        <h3>Jaime Escalante</h3>
+        <span class="profile__role">Digital Marketing</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-nav__link">📊 Dashboard</a>
+        <a href="#" class="sidebar-nav__link">📚 Kurslarim</a>
+        <a href="#" class="sidebar-nav__link sidebar-nav__link--active">👤 Profil</a>
+        <a href="#" class="sidebar-nav__link">🔒 Xavfsizlik</a>
+        <a href="#" class="sidebar-nav__link">🚪 Chiqish</a>
+      </nav>
+    </aside>
+
+    <!-- FORM -->
+    <div class="profile__form-wrap">
+      <span class="eyebrow">Sozlamalar</span>
+      <h1 class="profile__title">Profilni tahrirlash</h1>
+      <p class="profile__text">Shaxsiy ma'lumotlaringizni yangilang va dolzarb holatda saqlang.</p>
+
+      <div class="avatar-upload">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Profil rasmi" class="avatar-upload__img">
+        <div class="avatar-upload__actions">
+          <label for="avatar" class="btn btn--outline btn--small">Rasm yuklash</label>
+          <input type="file" id="avatar" name="avatar" accept="image/*" hidden>
+          <button type="button" class="btn btn--ghost btn--small">O'chirish</button>
+        </div>
+      </div>
+
+      <form class="profile-form" action="#" method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">Ism</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Ismingiz" value="Jaime" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Familiya</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Familiyangiz" value="Escalante" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@mail.com" value="jaime.escalante@mail.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefon raqam</label>
+          <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" value="+998 90 123 45 67" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary">O'zgarishlarni saqlash</button>
+          <button type="reset" class="btn btn--ghost">Bekor qilish</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <div class="logo">
+        <span class="logo__icon">🛡️</span>
+        <span class="logo__text">Clas<span class="accent">rom</span></span>
+      </div>
+      <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+      <div class="socials">
+        <a href="#">f</a>
+        <a href="#">✆</a>
+        <a href="#">◎</a>
+        <a href="#">in</a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Our Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Support</a>
+      <a href="#">Latest Blog</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="footer__col">
+      <h4>Feature</h4>
+      <a href="#">Data Analytics</a>
+      <a href="#">Email Marketing</a>
+      <a href="#">Seo Ranking</a>
+      <a href="#">Website Growth</a>
+      <a href="#">Affiliate</a>
+    </div>
+    <div class="footer__col">
+      <h4>Need Help?</h4>
+      <a href="#">Find a Job?</a>
+      <a href="#">Looking Consultant?</a>
+      <a href="#">Download App</a>
+      <a href="#">Create a Account</a>
+      <a href="#">Much More</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    © 2021 All Rights Reserved By : Soykot Talukdar
+  </div>
+</footer>
+
+<script>
+  const avatarInput = document.getElementById('avatar');
+  const avatarImg = document.querySelector('.avatar-upload__img');
+  avatarInput.addEventListener('change', () => {
+    const file = avatarInput.files[0];
+    if (file) {
+      avatarImg.src = URL.createObjectURL(file);
+    }
+  });
+</script>
+
+</body>
+</html>

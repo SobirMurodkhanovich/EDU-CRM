@@ -1,0 +1,186 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - Profil</title>
+<link rel="stylesheet" href="{% static 'user/profile.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="container header__inner">
+    <div class="logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+    <nav class="nav">
+      <a href="#" class="nav__link">Home</a>
+      <a href="#" class="nav__link">About Us</a>
+      <a href="#" class="nav__link">Courses</a>
+      <a href="#" class="nav__link">Portfolio</a>
+      <a href="#" class="nav__link">Testimonial</a>
+      <a href="#" class="nav__link">Contact</a>
+    </nav>
+    <div class="header__user">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Profil" class="header__avatar">
+    </div>
+  </div>
+</header>
+
+<!-- PROFILE SECTION -->
+<section class="profile">
+  <div class="container profile__inner">
+
+    <!-- SIDEBAR -->
+    <aside class="profile__sidebar">
+      <div class="profile__card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Profil rasmi" class="profile__avatar">
+        <h3>Jaime Escalante</h3>
+        <span class="profile__role">Digital Marketing</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-nav__link sidebar-nav__link--active">👤 Profil</a>
+        <a href="#" class="sidebar-nav__link">📊 Dashboard</a>
+        <a href="#" class="sidebar-nav__link">📚 Kurslarim</a>
+        <a href="edit_profile.html" class="sidebar-nav__link">✏️ Tahrirlash</a>
+        <a href="#" class="sidebar-nav__link">🔒 Xavfsizlik</a>
+        <a href="#" class="sidebar-nav__link">🚪 Chiqish</a>
+      </nav>
+    </aside>
+
+    <!-- PROFILE CONTENT -->
+    <div class="profile__content">
+
+      <!-- COVER + HEAD -->
+      <div class="profile-head">
+        <div class="profile-head__cover"></div>
+        <div class="profile-head__body">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Jaime Escalante" class="profile-head__avatar">
+          <div class="profile-head__info">
+            <h1>Jaime Escalante</h1>
+            <span class="profile-head__role">Digital Marketing Instructor</span>
+            <div class="profile-head__meta">
+              <span class="rating">4.8 ⭐ Instructor Rating</span>
+              <span class="dot">•</span>
+              <span>643,512 Students</span>
+              <span class="dot">•</span>
+              <span>33 Course</span>
+            </div>
+          </div>
+          <a href="edit_profile.html" class="btn btn--outline">✏️ Profilni tahrirlash</a>
+        </div>
+      </div>
+
+      <!-- STATS -->
+      <div class="stats">
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--green">📚</div>
+          <div>
+            <h4>12</h4>
+            <span>Faol kurslar</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--purple">🏆</div>
+          <div>
+            <h4>8</h4>
+            <span>Sertifikatlar</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon stat-icon--orange">⏱️</div>
+          <div>
+            <h4>146 soat</h4>
+            <span>O'qish vaqti</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL INFO -->
+      <div class="info-card">
+        <div class="info-card__head">
+          <div>
+            <span class="eyebrow">Shaxsiy ma'lumot</span>
+            <h2>Profil ma'lumotlari</h2>
+          </div>
+          <a href="edit_profile.html" class="link-arrow">Tahrirlash →</a>
+        </div>
+
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-item__label">Ism</span>
+            <span class="info-item__value">Jaime</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item__label">Familiya</span>
+            <span class="info-item__value">Escalante</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item__label">Email</span>
+            <span class="info-item__value">jaime.escalante@mail.com</span>
+          </div>
+          <div class="info-item">
+            <span class="info-item__label">Telefon raqam</span>
+            <span class="info-item__value">+998 90 123 45 67</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <div class="logo">
+        <span class="logo__icon">🛡️</span>
+        <span class="logo__text">Clas<span class="accent">rom</span></span>
+      </div>
+      <p>Lorem ipsum is simply dummy text of the printing and typesetting industry.</p>
+      <div class="socials">
+        <a href="#">f</a>
+        <a href="#">✆</a>
+        <a href="#">◎</a>
+        <a href="#">in</a>
+      </div>
+    </div>
+    <div class="footer__col">
+      <h4>Our Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+      <a href="#">Support</a>
+      <a href="#">Latest Blog</a>
+      <a href="#">Pricing</a>
+    </div>
+    <div class="footer__col">
+      <h4>Feature</h4>
+      <a href="#">Data Analytics</a>
+      <a href="#">Email Marketing</a>
+      <a href="#">Seo Ranking</a>
+      <a href="#">Website Growth</a>
+      <a href="#">Affiliate</a>
+    </div>
+    <div class="footer__col">
+      <h4>Need Help?</h4>
+      <a href="#">Find a Job?</a>
+      <a href="#">Looking Consultant?</a>
+      <a href="#">Download App</a>
+      <a href="#">Create a Account</a>
+      <a href="#">Much More</a>
+    </div>
+  </div>
+  <div class="footer__bottom">
+    © 2021 All Rights Reserved By : Soykot Talukdar
+  </div>
+</footer>
+
+</body>
+</html>

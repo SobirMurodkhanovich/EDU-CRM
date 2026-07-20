@@ -54,7 +54,7 @@ class UpdateProfileView(View):
         context = {
             'form': form,
         }
-        return render(request, 'user/update.html', context)
+        return render(request, 'user/update-profile.html', context)
 
     def post(self, request):
         form = UserProfileUpdateForm(request.POST,request.FILES)
@@ -64,7 +64,7 @@ class UpdateProfileView(View):
         context = {
             'form': form,
         }
-        return render(request, 'user/update.html', context)
+        return render(request, 'user/update-profile.html', context)
 
 class LogoutView(View):
     def get(self, request):

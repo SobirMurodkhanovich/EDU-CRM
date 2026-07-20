@@ -73,7 +73,7 @@
               <span>33 Course</span>
             </div>
           </div>
-          <a href="edit_profile.html" class="btn btn--outline">✏️ Profilni tahrirlash</a>
+          <a href="{% url 'user:update_profile' %}" class="btn btn--outline">✏️ Profilni tahrirlash</a>
         </div>
       </div>
 
@@ -109,25 +109,26 @@
             <span class="eyebrow">Shaxsiy ma'lumot</span>
             <h2>Profil ma'lumotlari</h2>
           </div>
-          <a href="edit_profile.html" class="link-arrow">Tahrirlash →</a>
+          <a href="{% url 'user:update_profile' %}" class="link-arrow">Tahrirlash →</a>
         </div>
-
+      <form class="register-form" action="#" method="POST">
+      {% csrf_token %}
         <div class="info-grid">
           <div class="info-item">
             <span class="info-item__label">Ism</span>
-            <span class="info-item__value">Jaime</span>
+            <span class="info-item__value">{{ user.first_name }}</span>
           </div>
           <div class="info-item">
             <span class="info-item__label">Familiya</span>
-            <span class="info-item__value">Escalante</span>
+            <span class="info-item__value">{{ user.last_name }}</span>
           </div>
           <div class="info-item">
             <span class="info-item__label">Email</span>
-            <span class="info-item__value">jaime.escalante@mail.com</span>
+            <span class="info-item__value">{{ user.email }}</span>
           </div>
           <div class="info-item">
             <span class="info-item__label">Telefon raqam</span>
-            <span class="info-item__value">+998 90 123 45 67</span>
+            <span class="info-item__value">{{ user.phone }}</span>
           </div>
         </div>
       </div>

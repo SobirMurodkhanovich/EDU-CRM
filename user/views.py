@@ -1,7 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.views import View
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from .forms import RegisterUserForm,LoginUserForm,UserProfileUpdateForm
 
 class RegisterView(View):
@@ -27,17 +27,25 @@ class LoginView(View):
         return render(request,'user/login.html',context)
 
     def post(self,request):
-        login_form = AuthenticationForm(data=request.POST)
-        if login_form.is_valid():
-            user = login_form.get_user()
-            login(request,user)
-            return redirect('landing_page')
+        if request.method == 'POST':
+            form = LoginUserForm(request.POST)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    if user.type_staff == 'admin':
+                        return redirect('admin_home')
+                    elif user.type_staff == 'seller':
+                        return redirect('seller_home')
+                else:
+                    return render(request, 'user/login.html', {'form': form, 'error': 'Invalid credentials.'})
         else:
             form = LoginUserForm()
-            context = {
-                'form': form
-            }
-            return render(request, 'user/login.html', context)
+
+        return render(request, 'user/login.html', {'form': form})
 
 class UserProfile(View):
     def get(self,request):

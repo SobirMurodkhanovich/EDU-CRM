@@ -70,6 +70,7 @@
 
       <form method="POST">
       {% csrf_token %}
+
       <div class="form-group">
           <label for="phone"> Username</label>
           <input type="username"  name="username" placeholder="" value="{{ user.username }}">

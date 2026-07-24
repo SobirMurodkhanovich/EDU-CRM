@@ -11,10 +11,11 @@ class RegisterUserForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password'])
         user.save()
 
-class LoginUserForm(forms.ModelForm):
-    class Meta:
-        model = CustomUser
-        fields = ('username','password')
+
+class LoginUserForm(forms.Form):
+        username = forms.CharField(max_length=150)
+        password = forms.CharField(widget=forms.PasswordInput)
+
 
 class UserProfileUpdateForm(forms.ModelForm):
     class Meta:

@@ -37,7 +37,7 @@ class LoginView(View):
                 if user is not None:
                     login(request, user)
                     if user.type_staff == 'admin':
-                        return redirect('admin:admin_teacher')
+                        return redirect('admin_home')
                     elif user.type_staff == 'seller':
                         return redirect('seller_home')
                 else:
@@ -46,6 +46,9 @@ class LoginView(View):
             form = LoginUserForm()
 
         return render(request, 'user/login.html', {'form': form})
+
+def admin_home(request):
+    return render(request, 'admin/teacher/techer_page.html')
 
 class UserProfile(View):
     def get(self,request):

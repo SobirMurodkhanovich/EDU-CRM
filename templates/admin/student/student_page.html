@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - O'qituvchilar</title>
+<link rel="stylesheet" href="{% static 'admin/student/student_page.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="admin">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar__logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+
+    <nav class="sidebar__nav">
+      <a href="#" class="sidebar__link sidebar__link--active">O'qituvchi</a>
+      <a href="students_light.html" class="sidebar__link">O'quvchi</a>
+      <a href="#" class="sidebar__link">Fan</a>
+      <a href="#" class="sidebar__link">Guruh</a>
+      <a href="#" class="sidebar__link">Davomat</a>
+      <a href="#" class="sidebar__link">To'lov</a>
+      <a href="#" class="sidebar__link">Oylik</a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <div class="content__header">
+      <h1>O'qituvchilar</h1>
+      <a href="{% url 'admin_page:add_student' %}"><button class="btn btn--add">+ Qo'shish</button></a>
+    </div>
+
+    <!-- Bo'sh holat -->
+    <div class="empty-state" id="emptyState">
+      <p>Hozircha o'qituvchilar mavjud emas.</p>
+    </div>
+
+    <!-- Ma'lumot bo'lganda ko'rinadigan jadval (namuna, kerak bo'lsa yoqiladi) -->
+    <div class="table-card" id="dataTable" style="display:none;">
+      <div class="table-head">
+        <span class="col-id">id.</span>
+        <span class="col-name">Ism/Familya</span>
+      </div>
+      <div class="table-body">
+        <div class="table-row">
+          <span class="col-id">1</span>
+          <span class="col-name">Jaime Escalante</span>
+          <div class="row-actions">
+            <button class="icon-btn icon-btn--edit">edit</button>
+            <button class="icon-btn icon-btn--delete">Delete</button>
+          </div>
+        </div>
+        <div class="table-row">
+          <span class="col-id">2</span>
+          <span class="col-name">Anne Sullivan</span>
+          <div class="row-actions">
+            <button class="icon-btn icon-btn--edit">edit</button>
+            <button class="icon-btn icon-btn--delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>

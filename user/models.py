@@ -3,10 +3,10 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
     TYPE_STAFF_CHOICES = (
         ('admin_page', 'Admin'),
-        ('seller', 'Seller'),
+        ('None', 'None'),
     )
     phone = models.CharField(max_length=20)
-    type_staff  = models.CharField(max_length=20, choices=TYPE_STAFF_CHOICES, default='seller')
+    type_staff  = models.CharField(max_length=20, choices=TYPE_STAFF_CHOICES, default='none')
     created_at = models.DateTimeField(auto_now_add=True)
 
 

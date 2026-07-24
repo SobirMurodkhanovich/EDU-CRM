@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - O'qituvchi qo'shish</title>
+<link rel="stylesheet" href="{% static 'admin/student/add_student.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="overlay">
+  <div class="modal">
+
+    <div class="modal__head">
+      <h2>O'quvchi qo'shish</h2>
+      <a href="{% url 'admin_page:student_page' %}" class="modal__close" aria-label="Yopish">✕</a>
+    </div>
+
+    <form class="add-form" method="POST">
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" placeholder="Ismi" required>
+      </div>
+
+      <div class="form-group">
+        <label for="last_name">Lastname</label>
+        <input type="text" id="last_name" name="last_name" placeholder="Familyasi" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" required>
+      </div>
+
+      <div class="modal__actions">
+        <a href="admin_light.html" class="btn btn--cancel">Bekor qilish</a>
+        <button type="submit" class="btn btn--save">Save</button>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+</body>
+</html>

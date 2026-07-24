@@ -39,7 +39,7 @@ class LoginView(View):
                     if user.type_staff == 'admin_page':
                         return redirect('admin_page:admin_home')
                     elif user.type_staff == 'seller':
-                        return redirect('seller_home')
+                        return redirect('landing_page')
                 else:
                     return render(request, 'user/login.html', {'form': form, 'error': 'Invalid credentials.'})
         else:

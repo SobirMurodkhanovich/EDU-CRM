@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
-from .forms import AddTeacherForm
+from .forms import AddTeacherForm, AddStudentForm
 from .models import Teacher
 
 
@@ -53,3 +53,34 @@ class UpdateTeacher(View):
         context = {'form': form, 'teacher': teacher}
         return render(request, 'admin/teacher/update-teacher.html', context)
 
+
+
+
+
+
+
+
+
+# ============================ Student Section ============================
+
+
+
+
+
+class StudentView(View):
+    def get(self, request):
+        return render(request, 'admin/student/student_page.html')
+
+class  AddStudentView(View):
+    def get(self, request):
+        form = AddStudentForm()
+        context = {'form': form}
+        return render(request, 'admin/student/add_student.html', context)
+
+    def post(self, request):
+        form = AddStudentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('admin_page:student_page')
+        context = {'form': form}
+        return render(request, 'admin/student/add_student.html', context)

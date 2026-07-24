@@ -5,7 +5,10 @@ from user.models import CustomUser
 Role = (
         ('admin_page', 'Admin'),
         ('seller', 'Seller'),
-        ('teacher','Teacher')
+        ('teacher','Teacher'),
+        ('student','Student'),
+        ('none','None'),
+
     )
 class Teacher(models.Model):
     username = models.CharField(max_length=55)
@@ -17,7 +20,11 @@ class Teacher(models.Model):
 
 class Student(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE,related_name='students')
+    username = models.CharField(max_length=55)
+    first_name = models.CharField(max_length=55)
+    last_name = models.CharField(max_length=55)
+    phone = models.CharField(max_length=20)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE,related_name='students', default='none')
     phone = models.CharField(max_length=20)
     role = models.CharField(max_length=50)
 

@@ -5,5 +5,5 @@ from .models import Teacher
 class AddTeacherForm(forms.ModelForm):
     class Meta:
         model = Teacher
-        fields = ('username','first_name','last_name','phone')
+        fields = ('username','first_name','last_name','phone','password')
 

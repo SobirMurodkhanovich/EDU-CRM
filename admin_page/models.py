@@ -12,6 +12,7 @@ class Teacher(models.Model):
     first_name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     phone = models.CharField(max_length=20)
+    password = models.CharField(max_length=55)
     role  = models.CharField(max_length=20, choices=Role, default='teacher')
 
 

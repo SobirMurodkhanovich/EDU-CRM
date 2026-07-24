@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - O'qituvchi</title>
+<link rel="stylesheet" href="{% static 'admin/teacher/teacher_detail.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active">O'qituvchi</a>
+      <a href="#" class="sidebar-link">O'quvchi</a>
+      <a href="#" class="sidebar-link">Fan</a>
+      <a href="#" class="sidebar-link">Guruh</a>
+      <a href="#" class="sidebar-link">Davomat</a>
+      <a href="#" class="sidebar-link">To'lov</a>
+      <a href="#" class="sidebar-link">Oylik</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <div class="content__head">
+      <h1 class="content__title">O'qituvchi</h1>
+      <a href="{% url 'admin_page:admin_home' %}" class="btn btn--outline btn--small">← Ortga</a>
+    </div>
+
+    <!-- PROFILE CARD -->
+    <div class="profile-card">
+      <div class="profile-card__main">
+        <div class="profile-card__avatar">{{ teacher.first_name|slice:":1" }}{{ teacher.last_name|slice:":1" }}</div>
+        <div class="profile-card__info">
+          <h2>{{ teacher.first_name }} {{ teacher.last_name }}</h2>
+          <div class="profile-card__meta">
+            <span>👤 {{ teacher.username }}</span>
+            <span>📞 {{ teacher.phone }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="profile-card__actions">
+        <a href="#" class="btn btn--outline btn--danger btn--small">O'chirish</a>
+        <a href="{% url 'admin_page:update_teacher' teacher.pk %}" class="btn btn--primary btn--small">Tahrirlash</a>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button type="button" class="tab-btn active" data-tab="students">O'quvchilari</button>
+      <button type="button" class="tab-btn" data-tab="groups">Guruhlar</button>
+    </div>
+
+    <!-- DATA PANEL: STUDENTS -->
+    <div class="data-panel" data-panel="students">
+      {% for student in teacher.students.all %}
+      <div class="data-row">
+        <div class="data-row__avatar">{{ student.first_name|slice:":1" }}{{ student.last_name|slice:":1" }}</div>
+        <div class="data-row__info">
+          <h4>{{ student.first_name }} {{ student.last_name }}</h4>
+          <span>{{ student.phone }}</span>
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-state">Hozircha o'quvchilar biriktirilmagan.</p>
+      {% endfor %}
+    </div>
+
+    <!-- DATA PANEL: GROUPS -->
+    <div class="data-panel" data-panel="groups" hidden>
+      {% for group in teacher.groups.all %}
+      <div class="data-row">
+        <div class="data-row__avatar">{{ group.name|slice:":2" }}</div>
+        <div class="data-row__info">
+          <h4>{{ group.name }}</h4>
+          <span>{{ group.students.count }} o'quvchi</span>
+        </div>
+      </div>
+      {% empty %}
+      <p class="empty-state">Hozircha guruhlar biriktirilmagan.</p>
+      {% endfor %}
+    </div>
+  </main>
+
+</div>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.data-panel');
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const target = btn.dataset.tab;
+      panels.forEach(panel => {
+        panel.hidden = panel.dataset.panel !== target;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

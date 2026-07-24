@@ -4,121 +4,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Clasrom Admin - O'qituvchilar</title>
+<title>Clasrom - O'qituvchilar</title>
 <link rel="stylesheet" href="{% static 'admin/teacher/teacher_page.css' %}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="admin">
+<div class="dashboard">
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
-    <div class="sidebar__logo">
+    <div class="logo">
       <span class="logo__icon">🛡️</span>
       <span class="logo__text">Clas<span class="accent">rom</span></span>
     </div>
 
-    <nav class="sidebar__nav">
-      <a href="#" class="sidebar__link sidebar__link--active">O'qituvchi</a>
-      <a href="#" class="sidebar__link">O'quvchi</a>
-      <a href="#" class="sidebar__link">Fan</a>
-      <a href="#" class="sidebar__link">Guruh</a>
-      <a href="#" class="sidebar__link">Davomat</a>
-      <a href="#" class="sidebar__link">To'lov</a>
-      <a href="#" class="sidebar__link">Oylik</a>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active">O'qituvchi</a>
+      <a href="#" class="sidebar-link">O'quvchi</a>
+      <a href="#" class="sidebar-link">Fan</a>
+      <a href="#" class="sidebar-link">Guruh</a>
+      <a href="#" class="sidebar-link">Davomat</a>
+      <a href="#" class="sidebar-link">To'lov</a>
+      <a href="#" class="sidebar-link">Oylik</a>
     </nav>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <!-- CONTENT -->
   <main class="content">
-
-    <div class="content__header">
-      <h1>O'qituvchilar</h1>
-      <button class="btn btn--add">+ Qo'shish</button>
+    <div class="content__head">
+      <h1 class="content__title">O'qituvchilar</h1>
+      <a href="{% url 'admin_page:add_teacher' %}" class="btn btn--primary btn--small">+ Qo'shish</a>
     </div>
 
-    <div class="cards-grid">
-
+    <div class="teacher-grid">
+      {% for teacher in teachers %}
       <div class="teacher-card">
-        <div class="teacher-card__avatar">JE</div>
+        <div class="teacher-card__avatar">{{ teacher.first_name|slice:":1" }}{{ teacher.last_name|slice:":1" }}</div>
         <div class="teacher-card__info">
-          <h3>Jaime Escalante</h3>
-          <span>Digital Marketing</span>
-          <span class="teacher-card__phone">+998 90 123 45 67</span>
+          <h3>{{ teacher.first_name }} {{ teacher.last_name }}</h3>
+          <span class="teacher-card__subject">{{ teacher.subject }}</span>
+          <span class="teacher-card__phone">{{ teacher.phone }}</span>
         </div>
         <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
+          <a href="{% url 'admin_page:teacher_detail' teacher.pk %}" class="icon-btn icon-btn--edit" title="Tahrirlash">✎</a>
+          <a href="#" class="icon-btn icon-btn--delete" title="O'chirish">✕</a>
         </div>
       </div>
-
-      <div class="teacher-card">
-        <div class="teacher-card__avatar">AS</div>
-        <div class="teacher-card__info">
-          <h3>Anne Sullivan</h3>
-          <span>UI Design</span>
-          <span class="teacher-card__phone">+998 91 234 56 78</span>
-        </div>
-        <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
-        </div>
-      </div>
-
-      <div class="teacher-card">
-        <div class="teacher-card__avatar">MC</div>
-        <div class="teacher-card__info">
-          <h3>Marva Collins</h3>
-          <span>UX Design</span>
-          <span class="teacher-card__phone">+998 93 345 67 89</span>
-        </div>
-        <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
-        </div>
-      </div>
-
-      <div class="teacher-card">
-        <div class="teacher-card__avatar">SW</div>
-        <div class="teacher-card__info">
-          <h3>Steve Wozniak</h3>
-          <span>Graphic Design</span>
-          <span class="teacher-card__phone">+998 94 456 78 90</span>
-        </div>
-        <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
-        </div>
-      </div>
-
-      <div class="teacher-card">
-        <div class="teacher-card__avatar">PT</div>
-        <div class="teacher-card__info">
-          <h3>Peter Tabichi</h3>
-          <span>Web Development</span>
-          <span class="teacher-card__phone">+998 95 567 89 01</span>
-        </div>
-        <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
-        </div>
-      </div>
-
-      <div class="teacher-card">
-        <div class="teacher-card__avatar">SL</div>
-        <div class="teacher-card__info">
-          <h3>Spike Lee</h3>
-          <span>APP Development</span>
-          <span class="teacher-card__phone">+998 97 678 90 12</span>
-        </div>
-        <div class="teacher-card__actions">
-          <button class="icon-btn icon-btn--edit" title="Tahrirlash">✎</button>
-          <button class="icon-btn icon-btn--delete" title="O'chirish">✕</button>
-        </div>
-      </div>
-
+      {% empty %}
+      <p class="empty-state">Hozircha o'qituvchilar mavjud emas.</p>
+      {% endfor %}
     </div>
   </main>
 

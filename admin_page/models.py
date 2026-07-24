@@ -3,20 +3,21 @@ from user.models import CustomUser
 
 
 Role = (
-        ('admin', 'Admin'),
+        ('admin_page', 'Admin'),
         ('seller', 'Seller'),
         ('teacher','Teacher')
     )
 class Teacher(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    username = models.CharField(max_length=55)
+    first_name = models.CharField(max_length=55)
+    last_name = models.CharField(max_length=55)
     phone = models.CharField(max_length=20)
     role  = models.CharField(max_length=20, choices=Role, default='teacher')
 
-    def __str__(self):
-        return self.user.username
 
 class Student(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE,related_name='students')
     phone = models.CharField(max_length=20)
     role = models.CharField(max_length=50)
 

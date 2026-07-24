@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clasrom - O'qituvchi qo'shish</title>
+<link rel="stylesheet" href="{% static 'admin/teacher/teacher_add.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <span class="logo__icon">🛡️</span>
+      <span class="logo__text">Clas<span class="accent">rom</span></span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active">O'qituvchi</a>
+      <a href="#" class="sidebar-link">O'quvchi</a>
+      <a href="#" class="sidebar-link">Fan</a>
+      <a href="#" class="sidebar-link">Guruh</a>
+      <a href="#" class="sidebar-link">Davomat</a>
+      <a href="#" class="sidebar-link">To'lov</a>
+      <a href="#" class="sidebar-link">Oylik</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <div class="content__head">
+      <h1 class="content__title">O'qituvchi qo'shish</h1>
+      <a href="{% url 'admin_page:admin_home' %}" class="btn btn--outline btn--small">← Ortga</a>
+    </div>
+
+    <div class="form-card">
+      <span class="eyebrow">Yangi o'qituvchi</span>
+      <h2 class="form-card__title">O'qituvchi ma'lumotlarini kiriting</h2>
+      <p class="form-card__text">Quyidagi maydonlarni to'ldiring va yangi o'qituvchini tizimga qo'shing.</p>
+
+      <form class="teacher-form"method="POST">
+        {% csrf_token %}
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="first_name">Ism</label>
+            <input type="text" id="first_name" name="first_name" placeholder="Ismi" required>
+          </div>
+          <div class="form-group">
+            <label for="last_name">Familiya</label>
+            <input type="text" id="last_name" name="last_name" placeholder="Familiyasi" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="username">Foydalanuvchi nomi</label>
+          <input type="text" id="username" name="username" placeholder="username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Telefon raqam</label>
+          <input type="tel" id="phone" name="phone" placeholder="+998 90 123 45 67" required>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn--primary btn--full">Qo'shish</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

@@ -36,8 +36,8 @@ class LoginView(View):
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     login(request, user)
-                    if user.type_staff == 'admin':
-                        return redirect('admin:admin_teacher')
+                    if user.type_staff == 'admin_page':
+                        return redirect('admin_page:admin_home')
                     elif user.type_staff == 'seller':
                         return redirect('seller_home')
                 else:

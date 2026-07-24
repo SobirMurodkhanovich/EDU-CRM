@@ -2,11 +2,15 @@ from django.db import models
 from user.models import CustomUser
 
 
-
+Role = (
+        ('admin', 'Admin'),
+        ('seller', 'Seller'),
+        ('teacher','Teacher')
+    )
 class Teacher(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     phone = models.CharField(max_length=20)
-    role = models.CharField(max_length=50)
+    role  = models.CharField(max_length=20, choices=Role, default='teacher')
 
     def __str__(self):
         return self.user.username
